@@ -1,0 +1,12 @@
+- content_for :head do
+  %title Gosu Online
+
+  %script#goban-card-template(type="text/template")
+    :plain
+      <span class="goban-name"><%= name %></span>
+
+  %script#goban-army-template(type="text/template")
+    :plain
+      <ul class="ozekis"></ul>
+      <ul class="heros"></ul>
+      <ul class="bakutos"></ul>
