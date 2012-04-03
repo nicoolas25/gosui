@@ -2,7 +2,8 @@ $ ->
   window.Goban = Backbone.Model.extend
     defaults:
       level: 1
-      url: "http://placehold.it/175x250"
+
+    getImagePath: (size) -> "/images/gobans/#{size}/#{@get('faction')}/#{@get('gid')}.jpg"
 
   window.GobanList = Backbone.Collection.extend
     model: window.Goban
@@ -34,9 +35,10 @@ $ ->
   window.ArmyGobanCardView = GobanCardView.extend
     render: ->
       @$el.popover
-        title   : @model.get('name')
-        content : "<img src=\"#{@model.get('url')}\" />"
-        template: '<div class="army-card player-' + @model.get('army').get('player') + ' popover"><div class="arrow"></div><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'
+        title     : @model.get('name')
+        placement : 'fixed'
+        content   : "<img src=\"#{@model.getImagePath('original')}\" />"
+        template  : '<div class="army-card player-' + @model.get('army').get('player') + ' popover"><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'
       GobanCardView.prototype.render.call(this)
 
   window.ArmyView = Backbone.View.extend

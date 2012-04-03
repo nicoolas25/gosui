@@ -143,6 +143,9 @@
           case 'right':
             tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
             break
+          case 'fixed':
+            tp = {top: "100%", left: "100%", 'margin-top':-actualHeight, 'margin-left':-actualWidth}
+            break
         }
 
         $tip
