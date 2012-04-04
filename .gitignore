@@ -1,4 +1,5 @@
 .bundle
+build
 .sass-cache
 vendor/bundle
 source/images/gobans/high/*/*.jpg
