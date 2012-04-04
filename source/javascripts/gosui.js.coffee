@@ -1,6 +1,6 @@
 $ ->
   window.Goban = Backbone.Model.extend
-    getImagePath: (size) -> "/images/gobans/#{size}/#{@get('clan')}/#{@get('gid')}.jpg"
+    getImagePath: (size) -> "images/gobans/#{size}/#{@get('clan')}/#{@get('gid')}.jpg"
 
   window.GobanList = Backbone.Collection.extend
     model: window.Goban
@@ -33,7 +33,11 @@ $ ->
 
   # Army cards get a popover on them
   window.ArmyGobanCardView = GobanCardView.extend
+    # Preload fullsize image
+    preload: -> $('<img />').attr('src', @model.getImagePath('original'))
+
     render: ->
+      @preload()
       @$el.popover
         title     : @model.get('name')
         placement : 'fixed'
