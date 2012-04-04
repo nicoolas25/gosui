@@ -6,5 +6,6 @@
 //= require libs/backbone-min
 
 //= require gosui
+//= require gosui-cards
 //= require gosu-sandbox
 

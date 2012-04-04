@@ -1,0 +1,18 @@
+goban_table = <%= data.gobans.gobans.to_json %>
+
+# Reorder goban_table in an object indexed by Goban IDs.
+window.goban_index = {}
+for name, value of goban_table
+  window.goban_index[value.gid] = _.extend({name:name}, value)
+
+# Reorder goban_table in an object indexed by Goban names.
+window.goban_name_index = {}
+for name, value of goban_table
+  window.goban_name_index[name] = _.extend({name:name}, value)
+
+window.full_gosu_deck = ->
+  res = []
+  for gid, attrs of window.goban_index
+    res.push attrs
+    res.push attrs if attrs.level is "bakuto"
+  _.shuffle res

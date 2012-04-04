@@ -1,9 +1,11 @@
 - content_for :head do
+  = javascript_include_tag 'application'
+  = stylesheet_link_tag "site.css"
   %title Gosu Online
 
   %script#goban-card-template(type="text/template")
     :plain
-      <span class="goban-name"><%= name %></span>
+      <img src="<%= url %>" title="<%= attr.name %>" />
 
   %script#goban-army-template(type="text/template")
     :plain

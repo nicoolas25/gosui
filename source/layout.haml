@@ -3,8 +3,6 @@
   %head
     %meta{:charset => "utf-8"}
     %meta{:content => "ie=edge,chrome=1", :'http-equiv' => "x-ua-compatible"}
-    = javascript_include_tag 'application'
-    = stylesheet_link_tag "site.css"
     = yield_content :head
   %body{:class => page_classes}
     #main{role:"main"}

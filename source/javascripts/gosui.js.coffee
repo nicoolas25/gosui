@@ -1,9 +1,6 @@
 $ ->
   window.Goban = Backbone.Model.extend
-    defaults:
-      level: 1
-
-    getImagePath: (size) -> "/images/gobans/#{size}/#{@get('faction')}/#{@get('gid')}.jpg"
+    getImagePath: (size) -> "/images/gobans/#{size}/#{@get('clan')}/#{@get('gid')}.jpg"
 
   window.GobanList = Backbone.Collection.extend
     model: window.Goban
@@ -27,7 +24,10 @@ $ ->
       @model.bind 'change', @render
 
     render: ->
-      renderedContent = @template(@model.toJSON())
+      renderedContent = @template
+        attr : @model.toJSON()
+        url  : @model.getImagePath('small')
+
       @$el.html(renderedContent)
       this
 
@@ -69,9 +69,9 @@ $ ->
         gobanView = new ArmyGobanCardView
           model: goban
         targetLine = switch goban.get('level')
-          when 1 then $bakutos
-          when 2 then $heros
-          when 3 then $ozekis
+          when "bakuto" then $bakutos
+          when "hero"   then $heros
+          when "ozeki"  then $ozekis
         targetLine.append(gobanView.render().el)
 
       this
