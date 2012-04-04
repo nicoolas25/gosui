@@ -7,7 +7,7 @@ div.army {
     padding: 0;
     min-height: 102px;
     li {
-      margin: 5px 5px;
+      margin: 5px;
       display: inline-block;
       border: 1px solid black;
       height: 100px;
@@ -27,4 +27,38 @@ div.popover.army-card {
       border-radius: 3px;
     }
   }
+}
+
+div.deck {
+  margin: 5px;
+  height: 447px;
+  max-width: 411px;
+  background: #CCC;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px #888;
+  div.zoom {
+    float: left;
+    margin: 5px;
+  }
+  ul.list {
+    height: 100%;
+    width: 97px;
+    float: left;
+    overflow: auto;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      display: block;
+      margin: 5px;
+      border: 1px solid black;
+      height: 100px;
+      width: 70px;
+    }
+  }
+}
+
+div.clear {
+  clear:both;
 }
