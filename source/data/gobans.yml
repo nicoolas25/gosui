@@ -1,0 +1,701 @@
+clans:
+  - alpha
+  - ancient
+  - dark
+  - dragoon
+  - fire
+  - kobuke
+  - meka
+  - shadow
+  - shibuke
+  - warmachine
+
+level:
+  - bakuto
+  - hero
+  - ozuki
+
+#
+# Contenu de la carte = description + activation + persistent + global
+#
+
+gobans:
+
+  #
+  # Anciens
+  #
+
+  Ancien Goban Chercheur:
+    gid: "001"
+    level: "bakuto"
+    clan: "ancient"
+    activation: "Piochez 3(+1) cartes puis défaussez 2 cartes de votre main."
+
+  Ancien Goban Illusionniste:
+    gid: "002"
+    level: "bakuto"
+    clan: "ancient"
+    activation : "Détruisez une carte LIBRE dans votre armée puis piochez 2 (+1) cartes."
+    rulings:
+      - "Si elle est LIBRE, cette carte peut se détruire elle-même."
+      - "Dans le cas d'une activation par un adversaire (Copycat, Blind, ...), le pouvoir est considéré comme étant activé et résolu par l'adversaire et pour le compte de l'adversaire qui l'active. Il doit donc détruire une carte LIBRE de son armée puis il pioche 2(+1) cartes."
+
+  Ancien Goban Prescient:
+    gid: "003"
+    level: "bakuto"
+    clan: "ancient"
+    mutable: 1
+    description: "Lorsque l'Ancien Goban Prescient arrive en jeu, rejouez un tour après celui-ci."
+    persistent: "Lorsque vous perdez une Grande Bataille, piochez 2 cartes."
+    rulings:
+      - "Lorsque l'Ancien Goban Prescient arrive en jeu vous êtes obligé de rejouer, même si vous devez passer pendant ce tour gratuit."
+
+  Ancien Goban Psi:
+    gid: "004"
+    level: "bakuto"
+    clan: "ancient"
+    mutable: 2
+    description: "Lorsque l'Ancien Goban Psi arrive en jeu, révélez les 5 prochaines cartes de la pioche, gardez dans votre main 1 (+1) carte et défaussez les autres."
+
+  Ancien Goban Visionnaire:
+    gid: "005"
+    level: "bakuto"
+    clan: "ancient"
+    mutable: 2
+    description: "Lorsque l'Ancien Goban Visionnaire arrive en jeu, piochez 2 (+1) cartes."
+
+  Adelam:
+    gid: "006"
+    level: "hero"
+    clan: "ancient"
+    activation: "Piochez 2(+1) cartes, si vous avez le Jeton Avantage, vous rejouez un tour après celui-ci."
+    rulings:
+      - "Lorsque vous activez Adelam et que vous avez le Jeton Avantage, vous êtes obligé de rejouer, même si vous devez passer pendant ce tour gratuit."
+
+  Alikan:
+    gid: "007"
+    level: "hero"
+    clan: "ancient"
+    activation: "Défaussez X cartes de votre main puis piochez X cartes."
+
+  Awn:
+    gid: "008"
+    level: "hero"
+    clan: "ancient"
+    mutable: 1
+    description: "Lorsque Awn arrive en jeu, tous les joueurs piochent 2 cartes puis vous rejouez un tour après celui-ci."
+    rulings:
+      - "\"...tous les joueurs...\" : Indique qu'il s'agit bien de tous les joueurs (celui qui joue la carte, celui qui a passé...)."
+      - "Lorsque Awn arrive en jeu vous êtes obligé de rejouer, même si vous devez passer pendant ce tour gratuit."
+      - "Le joueur actif pioche d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
+
+  Copycat:
+    gid: "009"
+    level: "hero"
+    clan: "ancient"
+    activation: "Copiez le pouvoir \"Activer\" de n'importe quelle carte dans l'armée de l'un de vos adversaires."
+    rulings:
+      - "La copie du Pouvoir de Pix'l et du Gobelin Alpha Shaman s'effectue en appliquant à la lettre le texte de celles-ci, à savoir que l'on pioche pour la LIGNE de Pix'l et pour la COLONNE du Gobelin Alpha Shaman comme si l'adversaire l'avait activé."
+
+  Justice:
+    gid: "010"
+    level: "hero"
+    clan: "ancient"
+    mutable: 3
+    description: "Lorsque Justice arrive en jeu, piochez 3(+1) cartes."
+
+  Loya:
+    gid: "011"
+    level: "hero"
+    clan: "ancient"
+    activation: "Reprenez en main 1 carte de votre choix depuis la défausse."
+
+  Patience:
+    gid: "012"
+    level: "hero"
+    clan: "ancient"
+    mutable: 3
+    description: "Lorsque Patience arrive en jeu, tous les joueurs piochent jusqu'à avoir 3 cartes en main."
+    activation: "Tous les joueurs piochent 3 cartes."
+    rulings:
+      - "\"...tous les joueurs...\" : Indique qu'il s'agit bien de tous les joueurs (celui qui joue la carte, celui qui a passé...)."
+      - "Les joueurs qui ont déjà 3 cartes ou plus en main ne font rien. Ni pioche, ni défausse."
+      - "Le joueur actif pioche d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
+
+  Ange:
+    gid: "013"
+    level: "ozeki"
+    clan: "ancient"
+    description: "Lorsque Ange arrive en jeu, le ou les joueurs avec le moins de points de victoire piochent 2 cartes."
+    rulings:
+      - "\"...le ou les joueurs...\" : Indique qu'il s'agit bien de tous les joueurs (celui qui joue la carte, celui qui a passé...)."
+      - "Si Ange est posé pendant une ronde où tous les joueurs ont le même nombre de point de victoire (autrement dit 0/0, 1/1, 2/2), tous les joueurs piochent 2 cartes."
+      - "Le joueur actif pioche d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
+
+  Kamakor:
+    gid: "014"
+    level: "ozeki"
+    clan: "ancient"
+    global : "Le premier joueur à passer dans chaque ronde pioche 3 cartes."
+    rulings:
+      - "Si Kamakor arrive en jeu et qu’un joueur a déjà passé pour la ronde en cours, alors le pouvoir de Kamakor n’entre en compte qu’à la prochaine ronde."
+      - "Kamakor en jeu avec The Edge : Lorsque que l’on passe pour la ronde en cours, appliquer le pouvoir de The Edge puis celui de Kamakor."
+
+  Mind:
+    gid: "015"
+    level: "ozeki"
+    clan: "ancient"
+    description: "Lorsque Mind arrive en jeu, tous les joueurs piochent ou défaussent jusqu'à avoir 4 cartes en main."
+    rulings:
+      - "\"...le ou les joueurs...\" : Indique qu'il s'agit bien de tous les joueurs (celui qui joue la carte, celui qui a passé...)."
+      - "Le joueur actif pioche/défausse d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
+
+  #
+  # Alphas
+  #
+
+  Gobelin Alpha Gardien:
+    gid: "016"
+    level: "bakuto"
+    clan: "alpha"
+    activation: "Piochez jusqu'à avoir 3 cartes en main."
+
+  Gobelin Alpha Guerrier:
+    gid: "017"
+    level: "bakuto"
+    clan: "alpha"
+    mutable: 2
+    description: "Lorsque le Gobelin Alpha Guerrier arrive en jeu, piochez 1 carte pour chaque point de victoire que vous avez puis prenez le Jeton Avantage."
+
+  Gobelin Alpha Invocateur:
+    gid: "018"
+    level: "bakuto"
+    clan: "alpha"
+    mutable: 2
+    description: "Lorsque le Gobelin Alpha Invocateur arrive en jeu, choisissez un clan puis révélez les 5 prochaines cartes de la pioche, gardez dans votre main toutes les cartes de ce clan et défaussez les autres."
+
+  Gobelin Alpha Recruteur:
+    gid: "019"
+    level: "bakuto"
+    clan: "alpha"
+    mutable: 2
+    description: "Lorsque le Gobelin Alpha Recruteur arrive en jeu, choisissez un niveau de carte (1, 2 ou 3) puis révélez les 5 prochaines cartes de la pioche, gardez dans votre main toutes les cartes du niveau choisi et défaussez les autres."
+
+  Gobelin Alpha Shaman:
+    gid: "020"
+    level: "bakuto"
+    clan: "alpha"
+    description: "Lorsque le Gobelin Alpha Shaman arrive en jeu, reprenez en main 1 carte \"Gobelin Alpha\" depuis la défausse."
+    activation: "Piochez 1 carte pour chaque \"Gobelin Alpha\" dans la COLONNE de ce Gobelin Alpha Shaman."
+    rulings:
+      - "Tous les Gobelins du clan « vert » sont considérés comme des Gobelins Alpha."
+      - "Gobelin Alpha étant le nom du clan et vert sa couleur."
+      - "Le pouvoir d'activation inclus ce Gobelin Alpha Shaman, vous piochez donc entre 1 et 3 cartes."
+      - "Si vous défaussez 2 cartes pour poser le Gobelin Alpha Shaman (normal ou mutation), vous pouvez reprendre en main une des cartes défaussées pour payer son coût."
+
+  Dogopark:
+    gid: "021"
+    level: "hero"
+    clan: "alpha"
+    mutable: 3
+    activation: "Chaque joueur pioche autant de cartes que de points de victoire qu'il possède. Les joueurs n'ayant pas de point de victoire défaussent 1 carte."
+    rulings:
+      - "\"...chaque joueur...\" : Inclus aussi celui qui joue la carte, celui/celle/ceux qui a (ont) passé..."
+      - "Le joueur actif pioche d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
+
+  Favre:
+    gid: "022"
+    level: "hero"
+    clan: "alpha"
+    mutable: 3
+    persistent: "Lorsque Favre est détruit ou Mute, piochez 2 cartes et prenez le Jeton Avantage."
+    rulings :
+      - "Lorsqu’on mute Favre en Sol, on résout d’abord le pouvoir de Favre (on pioche) puis le pouvoir de Sol (on défausse)."
+
+  Jaedong:
+    gid: "023"
+    level: "hero"
+    clan: "alpha"
+    mutable: 3
+    description: "Lorsque Jaedong arrive en jeu, piochez 1 carte pour chaque point de victoire que vous avez puis prenez le Jeton Avantage."
+    persistent: "Lorsque vous gagnez une Grande Bataille, piochez 2 cartes."
+
+  Pix’l:
+    gid: "024"
+    level: "hero"
+    clan: "alpha"
+    mutable: 3
+    activation: "Piochez 1 carte pour chaque \"Gobelin Alpha\" dans la LIGNE de Pix'l."
+    rulings:
+      - "Le pouvoir d'activation inclus Pix'l, vous piochez donc entre 1 et 5 cartes."
+      - "Tous les Gobelins du clan vert sont considérés comme des Gobelins Alpha. Gobelin Alpha étant le nom du clan et vert sa couleur."
+
+  Prahs:
+    gid: "025"
+    level: "hero"
+    clan: "alpha"
+    persistent: "Lorsqu'une carte de votre armée est détruite, vous pouvez piocher 1 (+1) carte."
+    rulings:
+      - "Le pouvoir de Prahs s’applique aussi à sa propre destruction."
+      - "Question : J’ai Prahs et Dawn dans mon armée. Je décide de poser Dalister pour détruire Prahs et un autre gobelin. Combien de cartes je pioche ? Réponse : Je piocherai 2 cartes grâce au pouvoir de Dawn et 2(+2) cartes pour le pouvoir de Prahs."
+
+  Sol:
+    gid: "026"
+    level: "hero"
+    clan: "alpha"
+    mutable: 1
+    description: "Lorsque Sol arrive en jeu, tous les joueurs défaussent la moitié de leurs cartes en main, arrondie à l'inférieur."
+    rulings:
+      - "\"...tous les joueurs...\" : Indique qu'il s'agit bien de tous les joueurs (celui qui joue la carte, celui/celle/ceux qui a (ont) passé...)."
+      - "Le joueur actif défausse d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
+      - "Lorsqu'on mute une carte en Sol, on résout d'abord les pouvoirs de mutation de la carte mutante, puis le pouvoir de défausse de Sol."
+
+  Sprew:
+    gid: "027"
+    level: "hero"
+    clan: "alpha"
+    mutable: 3
+    persistent: "A la fin de chaque Grande Bataille, prenez le Jeton Avantage."
+
+  Kork:
+    gid: "028"
+    level: "ozeki"
+    clan: "alpha"
+    description: "Lorsque Kork arrive en jeu, le ou les joueurs avec le moins de points de victoire piochent 2 cartes."
+    rulings:
+      - "\"...le ou les joueurs...\" : Indique qu'il s'agit bien de tous les joueurs (celui qui joue la carte, celui qui a passé...)."
+      - "Si Kork est posé pendant une ronde où tous les joueurs ont le même nombre de point de victoire (autrement dit 0/0, 1/1, 2/2), tous les joueurs piochent 2 cartes."
+      - "Le joueur actif pioche d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
+
+  Labdad:
+    gid: "029"
+    level: "ozeki"
+    clan: "alpha"
+    global: "Si le vainqueur d'une Grande Bataille n'a pas de points de victoire, il gagne alors 2 points de victoire au lieu d'un."
+    rulings:
+      - "Dans une partie à 3/4 joueurs, les joueurs A et B n'ont pas de Points de victoire et le joueur C a le Jeton Avantage. A et B sont vainqueur à égalité lors de la Grande Bataille, ils gagnent 2 Points de victoire chacun."
+
+  Temuchin:
+    gid: "030"
+    level: "ozeki"
+    clan: "alpha"
+    global: "Au début de chaque RONDE, si un joueur a dans son armée 15 cartes, il gagne la partie."
+    rulings:
+      - "Victoire spéciale : A trois (ou quatre) joueurs, imaginons le cas suivant : joueur A possède le Jeton Avantage. On commence une nouvelle RONDE, joueur B et C on 15 gobelins, et Temuchin est en jeu. Qui gagne ? Réponse : Victoire Ex-æquo pour B et C."
+      - "Victoire spéciale : Il y a en jeu Vict'Hory et Temuchin. Joueur B à 15 gobelins en jeu. Joueur C à 15 gobelins en jeu, dont 8 du même clan. Réponse : Victoire Ex-æquo encore."
+
+  #
+  # Feu
+  #
+
+  Gobelin de Feu AK-52:
+    gid: "031"
+    level: "bakuto"
+    clan: "fire"
+    activation: "Défaussez X cartes de votre main puis choisissez une carte LIBRE de niveau X et détruisez-la."
+    rulings:
+      - "Si elle est LIBRE, cette carte peut se détruire elle-même."
+
+  Gobelin de Feu A.M.M.O.:
+    gid: "032"
+    level: "bakuto"
+    clan: "fire"
+    mutable: 2
+    description: "Lorsque le Gobelin de Feu A.M.M.O. arrive en jeu et lorsqu'il Mute, piochez 1(+1) carte."
+
+  Gobelin de Feu Explosif:
+    gid: "033"
+    level: "bakuto"
+    clan: "fire"
+    mutable: 3
+    description: "Lorsque le Gobelin de Feu Mute choisissez 1 carte LIBRE puis détruisez-la et prenez le Jeton Avantage."
+
+  Gobelin de Feu Sniper:
+    gid: "034"
+    level: "bakuto"
+    clan: "fire"
+    mutable: 2
+    description: "Lorsque le Gobelin de Feu Sniper arrive en jeu, choisissez jusqu'à 2 cartes LIBRES de niveau 1 puis détruisez-les."
+    rulings:
+      - "Il est possible de choisir 0, 1 ou 2 cartes LIBRES de niveau 1 à l'arrivée en jeu de ce gobelin."
+      - "Si on décide de détruire 2 cartes, il faut que les deux cibles soient LIBRES à l'arrivée en jeu de ce gobelin."
+      - "Si elle est LIBRE, cette carte peut se détruire elle-même."
+
+  Gobelin de Feu Téléporteur:
+    gid: "035"
+    level: "bakuto"
+    clan: "fire"
+    mutable: 2
+    description: "Lorsque le Gobelin de Feu Téléporteur arrive en jeu, l'adversaire de votre choix défausse 1 carte de sa main et vous piochez 1 carte. Lorsque le Gobelin de Feu Téléporteur Mute, prenez le Jeton Avantage."
+
+  Dalister:
+    gid: "036"
+    level: "hero"
+    clan: "fire"
+    mutable: 3
+    description: "Lorsque Dalister arrive en jeu, choisissez 1(+1) carte LIBRE puis détruisez-la."
+    rulings:
+      - "En cas de bonus, vous devez obligatoirement détruire 2 cartes LIBRES, même si cela vous oblige à détruire une de vos cartes. Exception faite, bien sur, du cas où il n'y aurait qu'1 carte LIBRE en jeu."
+      - "Si elle est LIBRE, cette carte peut se détruire elle-même."
+
+  Dom:
+    gid: "037"
+    level: "hero"
+    clan: "fire"
+    mutable: 3
+    activation: "Inversez 2 cartes d'un même niveau dans l'armée du joueur de votre choix, si vous avez le Jeton Avantage choisissez une carte LIBRE et détruisez-la."
+    rulings:
+      - "Question : Puis-je utiliser la première partie du pouvoir de Dom pour inverser 2 de mes gobelins et, ensuite, comme j'ai le Jeton Avantage, détruire un gobelin LIBRE chez mon adversaire ? Réponse : Oui, les 2 pouvoirs sont bien distincts et rien ne précise que ceux-ci doivent être résolus dans une même armée."
+      - "Si elle est LIBRE, cette carte peut se détruire elle-même."
+
+  Dynamite:
+    gid: "038"
+    level: "hero"
+    clan: "fire"
+    mutable: 2
+    activer: "Reprenez en main 1 (+1) carte \"Fact\", \"Garsh\", \"Ideo\" ou \"Walror\" depuis la défausse, si vous avez le Jeton Avantage vous rejouez un tour après celui-ci."
+    rulings:
+      - "Une fois activé, si vous avez le Jeton Avantage, vous êtes obligé de rejouer, même si vous devez passer pendant ce tour gratuit."
+
+  Erxast:
+    gid: "039"
+    level: "hero"
+    clan: "fire"
+    mutable: 4
+    description: "Lorsque Erxast arrive en jeu, l'adversaire de votre choix défausse 1(+1) carte de sa main et vous piochez 1(+1) carte."
+
+  Fact:
+    gid: "040"
+    level: "hero"
+    clan: "fire"
+    mutable: 3
+    description: "Lorsque Fact arrive en jeu, choisissez 1 carte LIBRE de Niveau 1 ou 2 puis détruisez-la. OU Piochez 2(+1) cartes. Choisissez l'un ou l'autre."
+    rulings:
+      - "Si elle est LIBRE, cette carte peut se détruire elle-même."
+
+  Garsh:
+    gid: "041"
+    level: "hero"
+    clan: "fire"
+    mutable: 3
+    description: "Lorsque Garsh arrive en jeu, choisissez 1 carte LIBRE de Niveau 1 ou 2 puis détruisez-la. OU Piochez 2(+1) cartes. Choisissez l'un ou l'autre."
+    rulings:
+      - "Si elle est LIBRE, cette carte peut se détruire elle-même."
+
+  Ideo:
+    gid: "042"
+    level: "hero"
+    clan: "fire"
+    mutable: 3
+    description: "Lorsque Ideo arrive en jeu, choisissez 1 carte LIBRE de Niveau 1 ou 2 puis détruisez-la. OU Piochez 2(+1) cartes. Choisissez l'un ou l'autre."
+    rulings:
+      - "Si elle est LIBRE, cette carte peut se détruire elle-même."
+
+  Dawn:
+    gid: "043"
+    level: "ozeki"
+    clan: "fire"
+    global: "Lorsqu'un joueur détruit une carte, il peut piocher 1 carte."
+    rulings:
+      - "Le pouvoir de Dawn s’applique également à sa propre destruction."
+
+  Lipsy:
+    gid: "044"
+    level: "ozeki"
+    clan: "fire"
+    description: "Lorsque Lipsy arrive en jeu, le ou les joueurs avec le moins de points de victoire piochent 2 cartes."
+    rulings:
+      - "\"...le ou les joueurs...\" : Indique qu'il s'agit bien de tous les joueurs (celui qui joue la carte, celui qui a passé...)."
+      - "Si Lipsy est posé pendant une ronde où tous les joueurs ont le même nombre de point de victoire (autrement dit 0/0, 1/1, 2/2), tous les joueurs piochent 2 cartes."
+      - "Le joueur actif pioche d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
+
+  Walror:
+    gid: "045"
+    level: "ozeki"
+    clan: "fire"
+    global: "A n'importe quel instant de la partie, si un joueur a dans son armée, en même temps, \"Garsh\", \"Fact\" et \"Ideo\", il gagne la partie."
+    rulings:
+      - "Si Fact, Garsh et/ou Ideo sont emprisonnés, la victoire alternative fonctionne toujours car ils conservent leur nom malgré l'emprisonnement. En revanche, si Walror est emprisonné, la victoire alternative ne peut plus fonctionner car il est privé de ses pouvoirs."
+
+  #
+  # Meka
+  #
+
+  Méka Gobelin Bidouilleur:
+    gid: "046"
+    level: "bakuto"
+    clan: "meka"
+    mutable: 2
+    description: "Lorsque le Méka Gobelin Bidouilleur arrive en jeu, reprenez en main 1 carte Méka Gobelin depuis la défausse, si vous avez le Jeton Avantage vous pouvez aussi piochez 1 carte."
+    rulings:
+      - "Tous les Gobelins du clan « bleu » sont considérés comme des Méka Gobelins."
+      - "Méka Gobelin étant le nom du clan et bleu sa couleur."
+      - "Si vous défaussez 2 cartes pour poser le Méka Gobelin Bidouilleur (normal ou mutation), vous pouvez reprendre en main une des cartes défaussées pour payer son coût."
+
+  Méka Gobelin Ingénieur:
+    gid: "047"
+    level: "bakuto"
+    clan: "meka"
+    activaton: "La carte LIBRE de votre choix remonte dans la main de son propriétaire, ce joueur doit ensuite défausser 1 carte de sa main."
+
+  Méka Gobelin Prêtre:
+    gid: "048"
+    level: "bakuto"
+    clan: "meka"
+    mutable: 2
+    description: "Lorsque le Méka Gobelin Prêtre arrive en jeu, prenez le Jeton Avantage. Lorsque le Méka Gobelin Prêtre Mute, reprenez en main un Jeton d'Activation déjà joué cette ronde-ci."
+    rulings:
+      - "Le Jeton récupéré doit impérativement être un de vos Jetons."
+      - "Vous pouvez récupérer n'importe lequel de vos Jetons."
+
+  Méka Gobelin Scout:
+    gid: "049"
+    level: "bakuto"
+    clan: "meka"
+    persistent: "Lorsqu'un adversaire Mute une carte, vous pouvez piocher 1 carte puis en défausser 1."
+
+  Méka Gobelin Sentinelle:
+    gid: "050"
+    level: "bakuto"
+    clan: "meka"
+    mutable: 2
+    description: "Lorsque le Méka Gobelin Sentinelle arrive en jeu, l'adversaire de votre choix défausse 1 carte de sa main et vous piochez 1 carte. Lorsque le Méka Gobelin Sentinelle Mute, prenez le Jeton Avantage."
+
+  Kameo:
+    gid: "051"
+    level: "hero"
+    clan: "meka"
+    mutable: 7
+    description: "Lorsque Kameo arrive en jeu, prenez le Jeton Avantage. Lorsque Kameo Mute, vous gagnez immédiatement 1 point de victoire et vos adversaires piochent 3 cartes."
+    rulings:
+      - "\"...vos adversaires piochent...\" : Cela inclut aussi celui/celle/ceux qui a (ont) passé..."
+      - "En commençant par le joueur à votre gauche, les adversaires piochent dans le sens des aiguilles d’une montre."
+
+  Manner:
+    gid: "052"
+    level: "hero"
+    clan: "meka"
+    mutable: 3
+    description: "Lorsque Manner Mute, tous les joueurs défaussent toutes leurs cartes en main puis ils piochent 5 nouvelles cartes."
+    rulings:
+      - "\"...tous les joueurs...\" : Indique qu'il s'agit bien de tous les joueurs (celui qui joue la carte, celui qui a passé...)."
+      - "Question : Lorsque je mute Manner, si je défausse ma main, je perds la carte qui devait muter à la place de Manner. Ou alors est-elle inaltérable ? Réponse : Effectivement, elle est inaltérable. Rien ne peut empêcher la mutation annoncée et la carte est donc mise de coté. Elle n’est pas défaussée avec les autres."
+      - "Question : Si je mute Manner pour Justice, je finis le tour avec 8 (9) cartes en mains et mon adversaire 5 ? Réponse : Oui, car on paye le coût de mutation, mute et applique le pouvoir de Manner, pose et applique le pouvoir de Justice."
+      - "Le joueur actif défausse d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
+
+  Meow:
+    gid: "053"
+    level: "hero"
+    clan: "meka"
+    mutable: 3
+    persistent: "Lorsque la défausse est mélangée pour constituer à nouveau la pioche, piochez jusqu'à avoir 7(+1) cartes en main et prenez le Jeton Avantage."
+
+  Mmo Twice:
+    gid: "054"
+    level: "hero"
+    clan: "meka"
+    mutable: 2
+    description: "Lorsque Mmo Twice arrive en jeu et lorsqu'il Mute, prenez le Jeton Avantage, piochez 1 carte et rejouez un tour après celui-ci."
+    rulings:
+      - "Lorsque MMo Twice arrive en jeu ET lorsqu'il mute, vous êtes obligé de rejouer, même si vous devez passer pendant ces tours gratuits."
+
+  Moonlight:
+    gid: "055"
+    level: "hero"
+    clan: "meka"
+    mutable: 3
+    description: "Lorsque Moonlight arrive en jeu et lorsqu'il Mute, reprenez en main un Jeton d'Activation déjà joué cette ronde-ci."
+    rulings:
+      - "Le Jeton récupéré doit impérativement être un de vos Jetons."
+      - "Vous pouvez récupérer n'importe lequel de vos Jetons."
+
+  Silend:
+    gid: "056"
+    level: "hero"
+    clan: "meka"
+    mutable: 3
+    description: "Lorsque Silend est détruit ou Mute, tous vos adversaires défaussent 2 cartes et vous prenez le Jeton Avantage."
+    rulings:
+      - "En commençant par le joueur à votre gauche, les adversaires défaussent dans le sens des aiguilles d’une montre."
+      - "Lorsqu’on mute Silend en Sol, on résout d’abord le pouvoir de Silend puis le pouvoir de Sol."
+
+  Time:
+    gid: "057"
+    level: "hero"
+    clan: "meka"
+    mutable: 4
+    description: "Lorsque Time arrive en jeu, l'adversaire de votre choix défausse 1(+1) carte de sa main et vous piochez 1(+1) carte."
+
+  Blind:
+    gid: "058"
+    level: "ozeki"
+    clan: "meka"
+    global: "Chaque joueur peut à présent jouer ses Jetons d'Activation sur les cartes des autres joueurs."
+    rulings:
+      - "Si vous jouez votre Jeton d’Activation sur une carte adverse, c’est vous qui bénéficiez du pouvoir de la carte."
+      - "Question : En 2vs2, si Blind est en jeu qui profite de l’activation d’une carte ? Réponse : Dans les 2 cas (Blind et règle du 2vs2), c'est « peut/pouvoir » donc le joueur choisit s'il joue le JA pour une règle ou l'autre, donc il choisit si c'est pour lui ou pour son allié."
+
+  Dante:
+    gid: "059"
+    level: "ozeki"
+    clan: "meka"
+    description: "Lorsque Dante arrive en jeu, le ou les joueurs avec le moins de points de victoire piochent 2 cartes."
+    rulings :
+      - "\"...le ou les joueurs...\" : Indique qu'il s'agit bien de tous les joueurs (celui qui joue la carte, celui qui a passé...)."
+      - "Si Dante est posé pendant une ronde où tous les joueurs ont le même nombre de point de victoire (autrement dit 0/0, 1/1, 2/2), tous les joueurs piochent 2 cartes."
+      - "Le joueur actif pioche d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
+
+  Vict’Hory:
+    gid: "060"
+    level: "ozeki"
+    clan: "meka"
+    global: "Au début de chaque RONDE, si un joueur a dans son armée 8 cartes du même clan, il gagne la partie."
+    rulings:
+      - "Petite erreur dans le texte du pouvoir de la carte, il faut lire \"Global: Au début de chaque RONDE, si un joueur a dans son armée 8 cartes ou plus du même clan, il gagne la partie.\""
+
+  #
+  # Sombres
+  #
+
+  Sombre Gobelin Assassin:
+    gid: "061"
+    level: "bakuto"
+    clan: "dark"
+    mutable: 3
+    zombie: true
+    description: "Lorsque le Sombre Gobelin Assassin arrive en jeu, choisissez 1 carte LIBRE de Niveau 1 ou 2 puis détruisez-la."
+    rulings:
+      - "Vous êtes obligés de détruire une carte, même si c'est une des vôtres."
+      - "Si elle est LIBRE, cette carte peut se détruire elle-même."
+
+  Sombre Gobelin Medic:
+    gid: "062"
+    level: "bakuto"
+    clan: "dark"
+    activation: "Emprisonnez 1(+1) carte de Niveau 1."
+    rulings:
+      - "En cas de bonus : Si vous ne pouvez emprisonner qu’une seule carte dans la ou les armée(s) adversaire(s), la 2ème doit être une de vos cartes."
+      - "En cas de bonus : Au bon vouloir du joueur, celui-ci peut emprisonner les Niveaux 1 chez 2 joueurs différents (1 dans chaque armée adversaire)."
+
+  Sombre Gobelin Nécromant:
+    gid: "063"
+    level: "bakuto"
+    clan: "dark"
+    mutable: 3
+    zombie: true
+    description: "Lorsque le Sombre Gobelin Nécromant arrive en jeu, emprisonnez 1(+1) carte de niveau 1 ou 2."
+    rulings:
+      - "En cas de bonus : Au bon vouloir du joueur, celui-ci peut emprisonner 2x Niveau 1, 2x Niveau 2 ou 1x Niveau 1 et 1x Niveau 2; et pas forcément chez le même joueur (pour des parties à 3 ou 4 ou en équipe)."
+      - "En cas de bonus : Si vous ne pouvez emprisonner qu’une seule carte dans la ou les armée(s) adversaire(s), la 2ème doit être une de vos cartes."
+
+  Sombre Gobelin Vengeur:
+    gid: "064"
+    level: "bakuto"
+    clan: "dark"
+    mutable: 3
+    zombie: true
+    description: "Lorsque le Sombre Gobelin Vengeur Mute, emprisonnez 2 cartes de niveau 1 ou 2."
+    rulings:
+      - "Question : Peut-on emprisonner 1 carte de N1 et une carte de N2 ou bien 2 cartes de N1 ou deux cartes de N2 ? Réponse : Comme le souhaite le joueur, et pas forcément chez le même joueur (pour des parties a 3 ou 4 ou en équipe)."
+      - "En cas de bonus : Si vous ne pouvez emprisonner qu’une seule carte dans la ou les armée(s) adverse(s), la 2ème doit être une de vos cartes."
+
+  Sombre Gobelin Voleur:
+    gid: "065"
+    level: "bakuto"
+    clan: "dark"
+    mutable: 3
+    zombie: true
+    description: "Lorsque le Sombre Gobelin Voleur arrive en jeu, l'adversaire de votre choix révèle les 3 prochaines cartes de la pioche, il garde 1 carte et vous prenez les deux restantes."
+
+  Duwal:
+    gid: "066"
+    level: "hero"
+    clan: "dark"
+    mutable: 3
+    zombie: true
+    description: "Lorsque Duwal arrive en jeu, emprisonnez 1(+1) carte."
+    rulings:
+      - "En cas de bonus : Si vous ne pouvez emprisonner qu’une seule carte dans la ou les armée(s) adverse(s), la 2ème doit être une de vos cartes."
+      - "En cas de bonus : Au bon vouloir du joueur, celui-ci peut emprisonner les 2 cartes chez 2 joueurs différents (1 dans chaque armée adverse)."
+
+  Kalim:
+    gid: "067"
+    level: "hero"
+    clan: "dark"
+    activation: "Emprisonnez 1 (+1) carte."
+    rulings:
+      - "En cas de bonus : Si vous ne pouvez emprisonner qu’une seule carte dans la ou les armée(s) adverse(s), la 2ème doit être une de vos cartes."
+      - "En cas de bonus : Au bon vouloir du joueur, celui-ci peut emprisonner les 2 cartes chez 2 joueurs différents (1 dans chaque armée adverse)."
+
+  Kao:
+    gid: "068"
+    level: "hero"
+    clan: "dark"
+    persistent: "A chaque fois qu'une carte est emprisonnée, vous pouvez piocher 1 carte."
+    rulings:
+      - "Le pouvoir de Kao s’applique aussi à son propre emprisonnement."
+      - "Le pouvoir de Kao ne s’applique pas aux cartes qui s'emprisonnent elles-mêmes (En cas d'échec du \"Shadow Jump\" ou en paiement d’un coût par exemple.)"
+
+  Kataclysm:
+    gid: "069"
+    level: "hero"
+    clan: "dark"
+    mutable: 3
+    zombie: true
+    description: "Lorsque Kataclysm arrive en jeu, tous les joueurs défaussent 2 cartes puis vous rejouez un tour après celui-ci."
+    rulings:
+      - "\"...tous les joueurs...\" : Indique qu'il s'agit bien de tous les joueurs (celui qui joue la carte, celui qui a passé...)."
+      - "Lorsque Kataclysm arrive en jeu vous êtes obligé de rejouer, même si vous devez passer pendant ce tour gratuit."
+      - "Le joueur actif défausse d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
+
+  Kokoshomushu:
+    gid: "070"
+    level: "hero"
+    clan: "dark"
+    description: "Si Kokoshomushu arrive en jeu en Mutant, défaussez toutes vos cartes en main puis piochez 5 cartes."
+    activation: "Le joueur de votre choix défausse 2 cartes de sa main."
+
+  Trsck:
+    gid: "071"
+    level: "hero"
+    clan: "dark"
+    mutable: 3
+    zombie: true
+    description: "Lorsque Trsck arrive en jeu, choisissez une carte LIBRE puis détruisez-là et piochez autant de cartes que le niveau de la carte détruite."
+    rulings:
+      - "Si elle est LIBRE, cette carte peut se détruire elle-même."
+
+  Ultimate:
+    gid: "072"
+    level: "hero"
+    clan: "dark"
+    activation: "Choisissez une carte LIBRE puis détruisez-la, si vous avez le Jeton Avantage vous pouvez aussi piocher 1 carte."
+    rulings:
+      - "Si elle est LIBRE, cette carte peut se détruire elle-même."
+
+  Higuma:
+    gid: "073"
+    level: "ozeki"
+    clan: "dark"
+    global: "Le joueur qui a le Jeton Avantage peut pendant son tour dépenser ses 2 Jetons d'Activation pour piocher 5 cartes au lieu de 3."
+    rulings:
+      - "Question : En 2vs2 avec Higuma en jeu, j’ai le jeton avantage. Puis-je dépenser mes 2 jetons pour que mon partenaire pioche 5 cartes? Réponse : Non, c'est l'action de base que l'on peut jouer sur son allié, pas l'action d'une carte, même si celle-ci a un pouvoir proche."
+
+  The Edge:
+    gid: "074"
+    level: "ozeki"
+    clan: "dark"
+    global: "Si un joueur a plus de 7 cartes en main à la fin de son tour, il doit défausser des cartes jusqu'à en avoir 7."
+    rulings:
+      - "The Edge en jeu avec Kamakor : Lorsque que l’on passe pour la ronde en cours, appliquer le pouvoir de The Edge puis celui de Kamakor."
+      - "Le ou les joueurs qui passent ne sont pas sujet au pouvoir de The Edge, car ils n'ont plus de fin de tour jusqu'à la prochaine ronde."
+
+  Trix:
+    gid: "075"
+    level: "ozeki"
+    clan: "dark"
+    description: "Lorsque Trix arrive en jeu, le ou les joueurs avec le moins de points de victoire piochent 2 cartes."
+    rulings:
+      - "\"...le ou les joueurs...\" : Indique qu'il s'agit bien de tous les joueurs (celui qui joue la carte, celui qui a passé...)."
+      - "Si Trix est posé pendant une ronde où tous les joueurs ont le même nombre de point de victoire (autrement dit 0/0, 1/1, 2/2), tous les joueurs piochent 2 cartes."
+      - "Le joueur actif pioche d’abord, puis les autres joueurs dans le sens des aiguilles d’une montre."
