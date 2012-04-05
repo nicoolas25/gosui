@@ -56,6 +56,9 @@ $ ->
     events:
       mouseover: 'zoom'
 
+    isFiltered: (level, clan) ->
+      (@model.get('level') is level or level is null) and (@model.get('clan') is clan or clan is null)
+
     zoom: ->
       if @preloadedImg?
         @options.deck.$('div.zoom').html(@preloadedImg)
@@ -111,24 +114,26 @@ $ ->
       _.bindAll(this, 'render')
       @collection.bind('reset', @render)
 
+    updateFilters: ->
+      @filteredClan  = @$('div.commands select[name="clan-filter"] option:selected').val()
+      @filteredLevel = @$('div.commands select[name="level-filter"] option:selected').val()
+      @filteredClan  = null if @filteredClan is ""
+      @filteredLevel = null if @filteredLevel is ""
+
     filter: ->
-      clan = @$('div.commands select[name="clan-filter"] option:selected').val()
-      level = @$('div.commands select[name="level-filter"] option:selected').val()
-      @gobanFilteredViews = _.filter @gobanViews, (gobanView) ->
-        (gobanView.model.get('level') is level or level is "") and
-          (gobanView.model.get('clan') is clan or clan is "")
+      @updateFilters()
       @renderFilter()
 
     filterClear: ->
       @$('div.commands select').val("")
-      @gobanFilteredViews = @gobanViews
+      @filteredLevel = @filteredClan = null
       @renderFilter()
 
     renderFilter: ->
       $listElements = @$('ul.list li.card')
       $listElements.hide()
-      _.each @gobanFilteredViews, (gobanView) ->
-        gobanView.$el.show()
+      _.each @gobanViews, (gobanView) =>
+        gobanView.$el.show() if gobanView.isFiltered(@filteredLevel, @filteredClan)
 
     render: ->
       @$el.html(@template({}))
@@ -145,7 +150,7 @@ $ ->
         $list.append(gobanView.render().el)
         gobanView.zoom() if idx is 0
 
-      @gobanFilteredViews = @gobanViews
+      @renderFilter() if @filteredClan? or @filteredLevel?
 
       this
 
