@@ -38,9 +38,9 @@ $ ->
 
     # Preload fullsize image
     preload: (cb) ->
-      @preloaded_img = $('<img />')
-      @preloaded_img.attr('src', @model.getImagePath('original'))
-      @preloaded_img.load(cb) if cb?
+      @preloadedImg = $('<img />')
+      @preloadedImg.attr('src', @model.getImagePath('original'))
+      @preloadedImg.load(cb) if cb?
 
   # Army cards get a popover on them
   window.ArmyGobanCardView = GobanCardView.extend
@@ -57,11 +57,11 @@ $ ->
       mouseover: 'zoom'
 
     zoom: ->
-      if @preloaded_img?
-        @options.deck.$('div.zoom').html(@preloaded_img)
+      if @preloadedImg?
+        @options.deck.$('div.zoom').html(@preloadedImg)
       else
         @preload =>
-          @options.deck.$('div.zoom').html(@preloaded_img)
+          @options.deck.$('div.zoom').html(@preloadedImg)
 
   window.ArmyView = Backbone.View.extend
     tagName: 'div'
@@ -102,22 +102,50 @@ $ ->
     className: 'deck'
     template: _.template($('#goban-deck-template').html())
 
+    events:
+      'change .commands select[name="level-filter"]' : 'filter'
+      'change .commands select[name="clan-filter"]'  : 'filter'
+      'click  #clear-filter-btn'                     : 'filterClear'
+
     initialize: ->
       _.bindAll(this, 'render')
       @collection.bind('reset', @render)
 
+    filter: ->
+      clan = @$('div.commands select[name="clan-filter"] option:selected').val()
+      level = @$('div.commands select[name="level-filter"] option:selected').val()
+      @gobanFilteredViews = _.filter @gobanViews, (gobanView) ->
+        (gobanView.model.get('level') is level or level is "") and
+          (gobanView.model.get('clan') is clan or clan is "")
+      @renderFilter()
+
+    filterClear: ->
+      @$('div.commands select').val("")
+      @gobanFilteredViews = @gobanViews
+      @renderFilter()
+
+    renderFilter: ->
+      $listElements = @$('ul.list li.card')
+      $listElements.hide()
+      _.each @gobanFilteredViews, (gobanView) ->
+        gobanView.$el.show()
+
     render: ->
       @$el.html(@template({}))
 
-      col   = @collection
-      $list = @$('ul.list')
+      @gobanViews = []
+      col         = @collection
+      $list       = @$('ul.list')
 
-      col.each (goban, idx) ->
+      col.each (goban, idx) =>
         gobanView = new DeckGobanCardView
           model: goban
           deck: this
+        @gobanViews.push(gobanView)
         $list.append(gobanView.render().el)
         gobanView.zoom() if idx is 0
+
+      @gobanFilteredViews = @gobanViews
 
       this
 

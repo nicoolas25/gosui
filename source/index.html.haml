@@ -15,6 +15,33 @@
 
   %script#goban-deck-template(type="text/template")
     :plain
-      <div class="zoom"></div>
-      <ul class="list"></ul>
-      <div class="clear"></div>
+      <div class="commands">
+        <ul>
+          <li>
+            <select class="filter" name="level-filter">
+              <option value=""></option>
+              <option value="bakuto">Bakutos</option>
+              <option value="hero">Heros</option>
+              <option value="ozeki">Ozekis</option>
+            </select>
+          </li>
+          <li>
+            <select class="filter" name="clan-filter">
+              <option value=""></option>
+              <option value="alpha">Gobelins Alphas</option>
+              <option value="ancient">Anciens Gobans</option>
+              <option value="fire">Gobelins de Feu</option>
+              <option value="dark">Sombres Gobelins</option>
+              <option value="meka">Meka Gobelins</option>
+            </select>
+          </li>
+          <li>
+            <button id="clear-filter-btn">Clean</button>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="zoom"></div>
+        <ul class="list"></ul>
+        <div class="clear"></div>
+      </div>

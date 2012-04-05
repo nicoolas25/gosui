@@ -36,30 +36,46 @@ div.popover.army-card {
 div.deck {
   @include small-shadow;
   margin: 5px;
-  height: 447px;
-  max-width: 569px;
   background: #CCC;
   border-radius: 5px;
-  div.zoom {
-    float: left;
-    margin: 5px;
-    @include small-shadow;
+  max-width: 569px;
+  div.commands {
+    text-align: center;
+    ul {
+      margin: 0;
+      padding: 5px;
+      list-style:none;
+      li {
+        display: inline-block;
+        select {
+          margin: 0;
+        }
+      }
+    }
   }
-  ul.list {
-    height: 100%;
-    width: 255px;
-    float: left;
-    overflow: auto;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    li {
-      display: inline-block;
+  div.content {
+    height: 447px;
+    div.zoom {
+      float: left;
       margin: 5px;
-      height: 100px;
-      width: 70px;
       @include small-shadow;
+    }
+    ul.list {
+      height: 100%;
+      width: 255px;
+      float: left;
+      overflow: auto;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li {
+        display: inline-block;
+        margin: 5px;
+        height: 100px;
+        width: 70px;
+        @include small-shadow;
+      }
     }
   }
 }
