@@ -1,20 +1,24 @@
 @import "bootstrap.min.css";
 
+@mixin small-shadow {
+  box-shadow: 3px 3px 3px #888;
+}
+
 div.army {
   ul.ozekis, ul.heros, ul.bakutos {
     list-style: none;
     margin: 0;
     padding: 0;
-    min-height: 102px;
+    min-height: 110px;
     li {
       margin: 5px;
       display: inline-block;
-      border: 1px solid black;
       height: 100px;
       width: 70px;
       text-align: center;
       font-size: 6pt;
       background: url(/images/gobans/small/placeholder.jpg);
+      @include small-shadow;
     }
   }
 }
@@ -30,19 +34,20 @@ div.popover.army-card {
 }
 
 div.deck {
+  @include small-shadow;
   margin: 5px;
   height: 447px;
-  max-width: 411px;
+  max-width: 569px;
   background: #CCC;
   border-radius: 5px;
-  box-shadow: 5px 5px 5px #888;
   div.zoom {
     float: left;
     margin: 5px;
+    @include small-shadow;
   }
   ul.list {
     height: 100%;
-    width: 97px;
+    width: 255px;
     float: left;
     overflow: auto;
     overflow-x: hidden;
@@ -50,11 +55,11 @@ div.deck {
     padding: 0;
     list-style: none;
     li {
-      display: block;
+      display: inline-block;
       margin: 5px;
-      border: 1px solid black;
       height: 100px;
       width: 70px;
+      @include small-shadow;
     }
   }
 }

@@ -37,9 +37,10 @@ $ ->
       this
 
     # Preload fullsize image
-    preload: ->
-      img = $('<img />')
-      img.attr('src', @model.getImagePath('original')).load -> img.remove()
+    preload: (cb) ->
+      @preloaded_img = $('<img />')
+      @preloaded_img.attr('src', @model.getImagePath('original'))
+      @preloaded_img.load(cb) if cb?
 
   # Army cards get a popover on them
   window.ArmyGobanCardView = GobanCardView.extend
@@ -56,7 +57,11 @@ $ ->
       mouseover: 'zoom'
 
     zoom: ->
-      @options.deck.$('div.zoom').html("<img src=\"#{@model.getImagePath('original')}\" />")
+      if @preloaded_img?
+        @options.deck.$('div.zoom').html(@preloaded_img)
+      else
+        @preload =>
+          @options.deck.$('div.zoom').html(@preloaded_img)
 
   window.ArmyView = Backbone.View.extend
     tagName: 'div'
