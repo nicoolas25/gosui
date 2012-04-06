@@ -44,6 +44,8 @@ $ ->
 
   # Army cards get a popover on them
   window.ArmyGobanCardView = GobanCardView.extend
+    tagName: 'span'
+
     render: ->
       @$el.popover
         title     : @model.get('name')
@@ -80,13 +82,10 @@ $ ->
 
       col      = @model.get('cards')
       player   = @model.get('player')
-      $bakutos = @$('.bakutos')
-      $heros   = @$('.heros')
-      $ozekis  = @$('.ozekis')
+      $bakutos = @$('tr.bakutos')
+      $heros   = @$('tr.heros')
+      $ozekis  = @$('tr.ozekis')
 
-      $bakutos.empty()
-      $heros.empty()
-      $ozekis.empty()
       $("div.popover.player-#{player}").remove()
 
       col.each (goban) ->
@@ -96,7 +95,10 @@ $ ->
           when "bakuto" then $bakutos
           when "hero"   then $heros
           when "ozeki"  then $ozekis
-        targetLine.append(gobanView.render().el)
+        targetLine.find('td:empty').first().html(gobanView.render().el)
+
+      # Opacify empty cells
+      @$('.details td:empty').css(opacity: 0.5)
 
       this
 

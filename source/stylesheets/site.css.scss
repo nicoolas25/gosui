@@ -4,21 +4,46 @@
   box-shadow: 3px 3px 3px #888;
 }
 
-div.army {
-  ul.ozekis, ul.heros, ul.bakutos {
-    list-style: none;
+@mixin clean-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
     margin: 0;
     padding: 0;
-    min-height: 110px;
-    li {
-      margin: 5px;
-      display: inline-block;
-      height: 100px;
-      width: 70px;
-      text-align: center;
-      font-size: 6pt;
-      background: url(../images/gobans/small/placeholder.jpg);
-      @include small-shadow;
+  }
+}
+
+@mixin clean-inlined-list {
+  @include clean-list;
+  li {
+    display: inline-block;
+  }
+}
+
+div.army {
+  .details {
+    table {
+      tr.ozekis, tr.heros, tr.bakutos {
+        min-height: 110px;
+        td {
+          border:5px solid transparent;
+          height: 100px;
+          width: 70px;
+          text-align: center;
+          font-size: 6pt;
+          background: url(../images/gobans/small/placeholder-bw.jpg) no-repeat;
+        }
+        span.card {
+          display: block;
+          @include small-shadow;
+        }
+      }
+    }
+  }
+  .summary {
+    ul {
+      @include clean-list;
     }
   }
 }
@@ -42,14 +67,10 @@ div.deck {
   div.commands {
     text-align: center;
     ul {
-      margin: 0;
+      @include clean-inlined-list;
       padding: 5px;
-      list-style:none;
-      li {
-        display: inline-block;
-        select {
-          margin: 0;
-        }
+      li select {
+        margin: 0;
       }
     }
   }
@@ -61,16 +82,13 @@ div.deck {
       @include small-shadow;
     }
     ul.list {
+      @include clean-inlined-list;
       height: 100%;
       width: 255px;
       float: left;
       overflow: auto;
       overflow-x: hidden;
-      margin: 0;
-      padding: 0;
-      list-style: none;
       li {
-        display: inline-block;
         margin: 5px;
         height: 100px;
         width: 70px;

@@ -8,40 +8,41 @@
       <img src="<%= url %>" title="<%= attr.name %>" />
 
   %script#goban-army-template(type="text/template")
-    :plain
-      <ul class="ozekis"></ul>
-      <ul class="heros"></ul>
-      <ul class="bakutos"></ul>
+    .summary
+      %ul.options
+        %li.advantage
+        %li.victories
+        %li.tokens
+      %ul.constants
+        %li.army-value
+        %li.hand-count
+    .details
+      %table
+        - ["ozekis", "heros", "bakutos"].each do |level|
+          %tr{:class => level}
+            - 5.times do
+              %td
 
   %script#goban-deck-template(type="text/template")
-    :plain
-      <div class="commands">
-        <ul>
-          <li>
-            <select class="filter" name="level-filter">
-              <option value=""></option>
-              <option value="bakuto">Bakutos</option>
-              <option value="hero">Heros</option>
-              <option value="ozeki">Ozekis</option>
-            </select>
-          </li>
-          <li>
-            <select class="filter" name="clan-filter">
-              <option value=""></option>
-              <option value="alpha">Gobelins Alphas</option>
-              <option value="ancient">Anciens Gobans</option>
-              <option value="fire">Gobelins de Feu</option>
-              <option value="dark">Sombres Gobelins</option>
-              <option value="meka">Meka Gobelins</option>
-            </select>
-          </li>
-          <li>
-            <button id="clear-filter-btn">Clean</button>
-          </li>
-        </ul>
-      </div>
-      <div class="content">
-        <div class="zoom"></div>
-        <ul class="list"></ul>
-        <div class="clear"></div>
-      </div>
+    .commands
+      %ul
+        %li
+          %select.filter(name="level-filter")
+            %option(value="")
+            %option(value="bakuto") Bakutos
+            %option(value="hero") Heros
+            %option(value="ozeki") Ozekis
+        %li
+          %select.filter(name="clan-filter")
+            %option(value="")
+            %option(value="alpha") Gobelins Alphas
+            %option(value="ancient") Anciens Gobans
+            %option(value="fire") Gobelins de Feu
+            %option(value="dark") Sombres Gobelins
+            %option(value="meka") Meka Gobelins
+        %li
+          %button#clear-filter-btn Clean
+    .content
+      .zoom
+      %ul.list
+      .clear
