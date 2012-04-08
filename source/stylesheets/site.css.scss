@@ -22,27 +22,30 @@
 }
 
 div.army {
-  .details {
-    table {
-      tr.ozekis, tr.heros, tr.bakutos {
-        min-height: 110px;
-        td {
-          border:5px solid transparent;
-          height: 100px;
-          width: 70px;
-          text-align: center;
-          font-size: 6pt;
-          background: url(../images/gobans/small/placeholder-bw.jpg) no-repeat;
-        }
-        span.card {
-          display: block;
-          @include small-shadow;
-        }
+  table {
+    tr.ozekis, tr.heros, tr.bakutos {
+      min-height: 110px;
+      td {
+        border:5px solid transparent;
+        height: 100px;
+        width: 70px;
+        text-align: center;
+        font-size: 6pt;
+        background: url(../images/gobans/small/placeholder-bw.jpg) no-repeat;
+      }
+      span.card {
+        display: block;
+        @include small-shadow;
       }
     }
   }
+}
+
+div.opponent {
   .summary {
-    ul {
+    float: left;
+    width: 50px;
+    ul.options, ul.constants {
       @include clean-list;
     }
   }

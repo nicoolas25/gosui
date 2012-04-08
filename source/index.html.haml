@@ -7,7 +7,7 @@
     :plain
       <img src="<%= url %>" title="<%= attr.name %>" />
 
-  %script#goban-army-template(type="text/template")
+  %script#opponent-template(type="text/template")
     .summary
       %ul.options
         %li.advantage
@@ -17,11 +17,13 @@
         %li.army-value
         %li.hand-count
     .details
-      %table
-        - ["ozekis", "heros", "bakutos"].each do |level|
-          %tr{:class => level}
-            - 5.times do
-              %td
+
+  %script#goban-army-template(type="text/template")
+    %table
+      - ["ozekis", "heros", "bakutos"].each do |level|
+        %tr{:class => level}
+          - 5.times do
+            %td
 
   %script#goban-deck-template(type="text/template")
     .commands

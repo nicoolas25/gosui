@@ -5,14 +5,17 @@ $ ->
   window.GobanList = Backbone.Collection.extend
     model: window.Goban
 
-  window.Army = Backbone.Model.extend
-    defaults: ->
-      cards: new GobanList
+  window.Opponent = Backbone.Model.extend
+    getArmyValue: ->
+      computedValue = 0
+      @get('army').each (goban) ->
+        switch goban.get('level')
+          when 'bakuto' then computedValue = computedValue + 2
+          when 'hero' then computedValue = computedValue + 3
+          when 'ozeki' then computedValue = computedValue + 5
+      computedValue
 
-    setCards: (encodedCards) ->
-      encodedCards = _.map(encodedCards, (encodedCard) => encodedCard.army = this ; encodedCard)
-      @set
-        cards: new GobanList(encodedCards)
+
 
   window.Deck = Backbone.Collection.extend
     model: window.Goban
@@ -51,7 +54,7 @@ $ ->
         title     : @model.get('name')
         placement : 'fixed'
         content   : "<img src=\"#{@model.getImagePath('original')}\" />"
-        template  : '<div class="army-card player-' + @model.get('army').get('player') + ' popover"><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'
+        template  : '<div class="army-card player-' + @model.get('player') + ' popover"><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'
       GobanCardView.prototype.render.call(this)
 
   window.DeckGobanCardView = GobanCardView.extend
@@ -75,20 +78,18 @@ $ ->
 
     initialize: ->
       _.bindAll(this, 'render')
-      @model.bind('change', @render)
+      @collection.bind('reset', @render)
 
     render: ->
+      console.log "army.render()"
       @$el.html(@template({}))
 
-      col      = @model.get('cards')
-      player   = @model.get('player')
-      $bakutos = @$('tr.bakutos')
-      $heros   = @$('tr.heros')
-      $ozekis  = @$('tr.ozekis')
+      $bakutos   = @$('tr.bakutos')
+      $heros     = @$('tr.heros')
+      $ozekis    = @$('tr.ozekis')
 
-      $("div.popover.player-#{player}").remove()
 
-      col.each (goban) ->
+      @collection.each (goban) ->
         gobanView = new ArmyGobanCardView
           model: goban
         targetLine = switch goban.get('level')
@@ -98,7 +99,43 @@ $ ->
         targetLine.find('td:empty').first().html(gobanView.render().el)
 
       # Opacify empty cells
-      @$('.details td:empty').css(opacity: 0.5)
+      @$('td:empty').css(opacity: 0.5)
+
+      this
+
+  window.OpponentView = Backbone.View.extend
+    tagName: 'div'
+    className: 'opponent'
+    template: _.template($('#opponent-template').html())
+
+    initialize: ->
+      _.bindAll(this, 'render')
+      _.bindAll(this, 'updateArmyValue')
+      _.bindAll(this, 'updateHand')
+      @model.get('army').bind('reset', @updateArmyValue)
+      @model.bind('change:hand', @updateHand)
+
+    updateArmyValue: ->
+      console.log "opponent.updateArmyValue()"
+      @$('.summary ul.constants .army-value').html(@model.getArmyValue())
+
+    updateHand: ->
+      console.log "opponent.updateHand()"
+      @$('.summary ul.constants .hand-count').html(@model.get('hand'))
+
+    render: ->
+      console.log "opponent.render()"
+      @$el.html(@template({}))
+
+      player = @model.get('player')
+      $("div.popover.player-#{player}").remove()
+
+      army = @model.get('army')
+      armyView = new ArmyView({collection: army})
+      @$('.details').html(armyView.render().el)
+      @updateArmyValue()
+
+      @updateHand()
 
       this
 
